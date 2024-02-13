@@ -3,7 +3,6 @@ export default class List {
     //конструктор принимает в себя данные карточки
     constructor (data, itemSelector) {
       this._name = data.name;
-     
       this._id = data.id;
       this._itemSelector = itemSelector;
     }
@@ -22,10 +21,10 @@ export default class List {
     generateItem() {
       //записали разметку в приватное поле _element
       this._element = this._getTemplate();
-      this._itemName = this._element.querySelector('.list__title');
       // добавили данные в разметку
-      this._itemName.textContent = this._name;
-     
+      this._element.textContent = this._name;
+      this._element.classList.add(`list_${this._id}`);
+      this._element.id = this._id;
       //вернули элемент с данными в разметке
       return this._element
     }
